@@ -11,7 +11,7 @@
 </p>
 
 ---
-# Using Golang on Architect
+# Using Spring Boot on Architect
 It is extremely common to run a REST API with a backend database as a standalone service so that it can be consumed by
 multiple, disparate applications.
 
@@ -40,7 +40,7 @@ You could use it to gather data about anything you want to rate, from your favor
   }
 ```
 
-A [postman](https://www.postman.com/) collection `springboot.postman_collection.json` is provided for convenience, and contains all of the exposed API and Database endpoints of the application's `MovieRatingController`.
+A [postman](https://www.postman.com/) collection `springboot.postman_collection.json` is provided for convenience, and contains all of the exposed API and Database endpoints; leveraging the `MovieRatingController`.
 
 ## Running Locally
 The `architect.yml` file is declarative, which allows the Architect Component it describes to be run in any environment,

@@ -1,4 +1,4 @@
-name: architect/template-starter-springboot
+name: template-starter-springboot
 
 description: |
   An example Architect component that uses Spring Boot to serve the API and
@@ -21,10 +21,10 @@ secrets:
   database_password:
     default: default_pw
 
-# Below are the configured services for the Go component.
+# Below are the configured services for the Spring Boot component.
 # For more info - https://docs.architect.io/components/services/
 services:
-  ### This service is the actual SpringBoot component ###
+  ### This service is the actual Spring Boot component ###
   app:
     # Build context is the location of your application relative to the architect.yml file
     build:
@@ -65,7 +65,7 @@ services:
         ENVIRONMENT: dev
 
 
-  #  This is an additional service that adds a postgres database
+  # This is an additional service that adds a postgres database
   #   to show off Architect's support for microservice architecture
   #   through service discovery. For more info, check out:
   #   https://docs.architect.io/components/service-discovery/
@@ -88,7 +88,7 @@ services:
 #   other services and dependencies to connect to one another.
 #   For more info - https://docs.architect.io/components/interfaces/
 interfaces:
-  # Interface for our main SpringBoot application
+  # Interface for our main Spring Boot application
   main:
     url: ${{ services.app.interfaces.main.url }}
     ingress:

@@ -1,0 +1,168 @@
+{
+	"info": {
+		"_postman_id": "2af5d82c-af23-4563-840b-997ecb39bb6f",
+		"name": "springboot",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/movierating/{id}",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"My First Movie\",\n    \"rating\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://app.localhost.architect.sh/movierating/1",
+					"protocol": "https",
+					"host": [
+						"app",
+						"localhost",
+						"architect",
+						"sh"
+					],
+					"path": [
+						"movierating",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/movierating",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"My First Movie\",\n    \"rating\": 5\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://app.localhost.architect.sh/movierating",
+					"protocol": "https",
+					"host": [
+						"app",
+						"localhost",
+						"architect",
+						"sh"
+					],
+					"path": [
+						"movierating"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/movierating",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://app.localhost.architect.sh/movierating",
+					"protocol": "https",
+					"host": [
+						"app",
+						"localhost",
+						"architect",
+						"sh"
+					],
+					"path": [
+						"movierating"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/movierating/{id}",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://app.localhost.architect.sh/movierating/1",
+					"protocol": "https",
+					"host": [
+						"app",
+						"localhost",
+						"architect",
+						"sh"
+					],
+					"path": [
+						"movierating",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/movierating/{id}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://app.localhost.architect.sh/movierating/1",
+					"protocol": "https",
+					"host": [
+						"app",
+						"localhost",
+						"architect",
+						"sh"
+					],
+					"path": [
+						"movierating",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

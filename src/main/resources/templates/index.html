@@ -1,71 +1,76 @@
 <!DOCTYPE html>
 <html lang='en'>
-    <head>
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-        <title>Architect - "Your Framework" app</title>
-    </head>
-    <body>
-        <div class="container">
-            <p>
-                <a href="//architect.io" target="blank">
-                    <img
-                        src="https://cdn.architect.io/logo/horizontal.png"
-                        width="320"
-                        alt="Architect Logo"
-                    />
-                </a>
-            </p>
-            <div class="card">
-                <div class="card-container">
-                    <div id="card-header">
-                        <h4><b>Congratulations!</b></h4>
-                    </div>
-                    <div class="card-content">
-                        <p>You've deployed your app locally. Now what?</p>
-                        <p>Below are additional steps you can try out with your newly deployed <a target="_blank" rel="noreferrer" href='https://docs.architect.io/tutorial/create-component/'>component</a>.</p>
-                        <ul>
-                            <li>Import the provided postman collection <kbd class='cmp_input'>springboot.postman_collection.json</kbd></li>
-                            <li>Try out the MovieRatingController, and refresh this page to see them update from the database service!</li>
-                            <ol style="list-style: circle;">
-                                <li>Add a movie rating <kbd class='cmp_input'>POST /movierating { title: string, rating: number }</kbd></li>
-                                <li>Get a movie rating <kbd class='cmp_input'>GET /movieratings/{id}</kbd></li>
-                                <li>Get ALL movie ratings <kbd class='cmp_input'>GET /movieratings</kbd></li>
-                                <li>Update a movie rating <kbd class='cmp_input'>PUT /movieratings/{id} { title: string, rating: number }</kbd></li>
-                                <li>Delete a movie rating <kbd class='cmp_input'>DELETE /movieratings/{id}</kbd></li>
-                            </ol>
-                            <br/>
-                            <li>Deploy your app to the cloud via Architect <b>(Recommended)</b></li>
-                            <ol>
-                                <li>Login or register a new Architect account for free at <a target="_blank" rel="noreferrer" href="https://cloud.architect.io/signup">architect.io</a></li>
-                                <li>Authenticate using the CLI by running the command <kbd class='cmp_input'>architect login</kbd></li>
-                                <li>Deploy your app to the cloud using the command <kbd class='cmp_input'>architect deploy</kbd></li>
-                            </ol>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <br />
-            <div th:unless="${#lists.isEmpty(movieRatings)}" class="card">
-                <div class="card-container">
-                    <div id="card-header">
-                        <h4><b>Movie Ratings</b></h4>
-                    </div>
-                    <div class="card-content">
-                        <table>
-                            <tr>
-                                <th>Movie ID</th>
-                                <th>Movie Title</th>
-                                <th>Movie Rating</th>
-                            </tr>
-                            <tr th:each="item : ${movieRatings}">
-                                <td th:text="${item.id}"></td>
-                                <td th:text="${item.title}"></td>
-                                <td th:text="${item.rating}"></td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <title>Architect - "Your Framework" app</title>
+</head>
+
+<body>
+  <div class="container">
+    <p>
+      <a href="//architect.io" target="blank">
+        <img src="https://cdn.architect.io/logo/horizontal.png" width="320" alt="Architect Logo" />
+      </a>
+    </p>
+    <div class="card">
+      <div class="card-container">
+        <div id="card-header">
+          <h4><b>Congratulations!</b></h4>
         </div>
-    </body>
+        <div class="card-content">
+          <p>You've deployed your app locally. Now what?</p>
+          <p>Below are additional steps you can try out with your newly deployed <a target="_blank" rel="noreferrer"
+              href='https://docs.architect.io/tutorial/create-component/'>component</a>.</p>
+          <ul>
+            <li>Import the provided postman collection <kbd class='cmp_input'>springboot.postman_collection.json</kbd>
+            </li>
+            <li>Try out the MovieRatingController, and refresh this page to see them update from the database service!
+            </li>
+            <ol style="list-style: circle;">
+              <li>Add a movie rating <kbd class='cmp_input'>POST /movierating { title: string, rating: number }</kbd>
+              </li>
+              <li>Get a movie rating <kbd class='cmp_input'>GET /movieratings/{id}</kbd></li>
+              <li>Get ALL movie ratings <kbd class='cmp_input'>GET /movieratings</kbd></li>
+              <li>Update a movie rating <kbd class='cmp_input'>PUT /movieratings/{id} { title: string, rating: number
+                  }</kbd></li>
+              <li>Delete a movie rating <kbd class='cmp_input'>DELETE /movieratings/{id}</kbd></li>
+            </ol>
+            <br />
+            <li>Deploy your app to the cloud via Architect <b>(Recommended)</b></li>
+            <ol>
+              <li>Login or register a new Architect account for free at <a target="_blank" rel="noreferrer"
+                  href="https://cloud.architect.io/signup">architect.io</a></li>
+              <li>Authenticate using the CLI by running the command <kbd class='cmp_input'>architect login</kbd></li>
+              <li>Deploy your app to the cloud using the command <kbd class='cmp_input'>architect deploy</kbd></li>
+            </ol>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div th:unless="${#lists.isEmpty(movieRatings)}" class="card">
+      <div class="card-container">
+        <div id="card-header">
+          <h4><b>Movie Ratings</b></h4>
+        </div>
+        <div class="card-content">
+          <table>
+            <tr>
+              <th>Movie ID</th>
+              <th>Movie Title</th>
+              <th>Movie Rating</th>
+            </tr>
+            <tr th:each="item : ${movieRatings}">
+              <td th:text="${item.id}"></td>
+              <td th:text="${item.title}"></td>
+              <td th:text="${item.rating}"></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
 </html>

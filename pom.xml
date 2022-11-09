@@ -16,7 +16,6 @@
   <description>Architect Spring Boot starter project</description>
   <properties>
     <java.version>18</java.version>
-    <maven.test.skip>true</maven.test.skip>
   </properties>
   <dependencies>
     <dependency>

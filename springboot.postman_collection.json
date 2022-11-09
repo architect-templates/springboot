@@ -84,7 +84,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://app.localhost.architect.sh/movierating/1",
+					"raw": "https://app.localhost.architect.sh/movierating",
 					"protocol": "https",
 					"host": [
 						"app",
@@ -93,8 +93,7 @@
 						"sh"
 					],
 					"path": [
-						"movierating",
-						"1"
+						"movierating"
 					]
 				}
 			},
@@ -149,7 +148,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://app.localhost.architect.sh/movierating/3",
+					"raw": "https://app.localhost.architect.sh/movierating/1",
 					"protocol": "https",
 					"host": [
 						"app",
@@ -159,7 +158,7 @@
 					],
 					"path": [
 						"movierating",
-						"3"
+						"1"
 					]
 				}
 			},

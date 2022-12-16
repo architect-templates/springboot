@@ -29,10 +29,14 @@ services:
     # Build context is the location of your application relative to the architect.yml file
     build:
       context: .
-    # Main interface port used to help define the url in the top level `interfaces` block at the bottom of this file
+    # interfaces are used to expose our application to the gateway, allowing
+    #   other services and dependencies to connect to one another.
+    #   For more info - https://docs.architect.io/components/interfaces/
     interfaces:
       main:
         port: 3000
+        ingress:
+          subdomain: app
     # Set environment variables for your application here
     environment:
       SPRING_PORT: 3000
@@ -82,13 +86,3 @@ services:
         username: ${{ secrets.database_user }}
         password: ${{ secrets.database_password }}
         path: /${{ secrets.database_name }}
-
-# interfaces are used to expose our application to the gateway, allowing
-#   other services and dependencies to connect to one another.
-#   For more info - https://docs.architect.io/components/interfaces/
-interfaces:
-  # Interface for our main Spring Boot application
-  main:
-    url: ${{ services.app.interfaces.main.url }}
-    ingress:
-      subdomain: app

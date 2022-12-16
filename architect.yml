@@ -50,12 +50,13 @@ services:
       path: /health
       port: 3000
       interval: 5s
+      initial_delay: 30s # Spring Boot takes ~30s to start app
     # Debug block is used to modify behavior when running `architect dev` (without the --debug=false flag)
     #   One common example is to enable hot-reloading for local development. For more info, see -
     #   https://docs.architect.io/components/local-configuration/#hot-reloading
     debug:
       volumes:
-      # The name of the volume we are creating
+        # The name of the volume we are creating
         app:
           # Path to source code we want to mount relative to the architect.yml file
           host_path: .
@@ -63,7 +64,6 @@ services:
           mount_path: /opt/code/src
       environment:
         ENVIRONMENT: dev
-
 
   # This is an additional service that adds a postgres database
   #   to show off Architect's support for microservice architecture
@@ -82,7 +82,6 @@ services:
         username: ${{ secrets.database_user }}
         password: ${{ secrets.database_password }}
         path: /${{ secrets.database_name }}
-
 
 # interfaces are used to expose our application to the gateway, allowing
 #   other services and dependencies to connect to one another.

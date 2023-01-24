@@ -59,6 +59,9 @@ services:
     #   One common example is to enable hot-reloading for local development. For more info, see -
     #   https://docs.architect.io/components/local-configuration/#hot-reloading
     debug:
+      build:
+        dockerfile: Dockerfile-dev
+      command: mvn spring-boot:run -Dspring.devtools.restart.enabled=true
       volumes:
         # The name of the volume we are creating
         app:

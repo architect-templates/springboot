@@ -60,13 +60,13 @@ services:
     #   https://docs.architect.io/components/local-configuration/#hot-reloading
     debug:
       build:
-        dockerfile: Dockerfile-dev
+        dockerfile: Dockerfile.dev
       command: mvn spring-boot:run -Dspring.devtools.restart.enabled=true
       volumes:
         # The name of the volume we are creating
         app:
           # Path to source code we want to mount relative to the architect.yml file
-          host_path: .
+          host_path: ./src
           # The `WORKDIR` defined in the Dockerfile, where we want our code to be mounted
           mount_path: /opt/code/src
       environment:

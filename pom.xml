@@ -97,6 +97,7 @@
           <profiles>
             <profile>dev</profile>
           </profiles>
+          <excludeDevtools>false</excludeDevtools>
         </configuration>
       </plugin>
     </plugins>

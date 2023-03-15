@@ -8,5 +8,4 @@ import com.architect.springboot.model.MovieRating;
 
 
 @Repository
-public interface MovieRatingRepository extends JpaRepository<MovieRating, Long> {
-}
+public interface MovieRatingRepository extends JpaRepository<MovieRating, Long> {}

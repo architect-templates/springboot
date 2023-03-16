@@ -1,14 +1,11 @@
 package com.architect.springboot.service;
 
 import java.util.List;
-import java.util.ArrayList;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.architect.springboot.model.MovieRating;
 import com.architect.springboot.repository.MovieRatingRepository;
 import com.architect.springboot.parameters.MovieRatingCreationParameters;
-
 
 @Service
 public class MovieRatingService {
@@ -17,9 +14,7 @@ public class MovieRatingService {
   private MovieRatingRepository movieRatingRepository;
 
   public List<MovieRating> getAllMovieRatings() {
-    List<MovieRating> movieRatings = new ArrayList<MovieRating>();
-    movieRatingRepository.findAll().forEach(movieRatings::add);
-    return movieRatings;
+    return movieRatingRepository.findAll();
   }
 
   public MovieRating saveMovieRating(MovieRatingCreationParameters movieRatingCreationParameters) {

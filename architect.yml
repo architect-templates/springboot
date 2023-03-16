@@ -40,9 +40,10 @@ services:
     # Set environment variables for your application here
     environment:
       SPRING_PORT: 3000
+      APP_URL: ${{ services.app.interfaces.main.ingress.url }}
       POSTGRES_USERNAME: ${{ secrets.database_user }}
       POSTGRES_PASSWORD: ${{ secrets.database_password }}
-      POSTGRES_URL: jdbc:postgresql://${{ services.database.interfaces.main.host}}:${{ services.database.interfaces.main.port}}/${{ secrets.database_name }}
+      POSTGRES_URL: jdbc:postgresql://${{ services.database.interfaces.main.host }}:${{ services.database.interfaces.main.port }}/${{ secrets.database_name }}
       ENVIRONMENT: prod
     # We want our app to start up after the db is running so that we can connect to it on startup!
     # This block contains a list of services we need to start before 'app' starts.

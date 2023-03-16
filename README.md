@@ -26,22 +26,6 @@ of us to promote this stack from local dev all the way through to production!
 
 [Learn more about the architect.yml file](//docs.architect.io/configuration)
 
-## Using the app and API
-
-This service implements POST/GET/PUT/DELETE functionality for a simple `movierating` schema consisting of a `title` and a `rating` between 1 and 5.
-You could use it to gather data about anything you want to rate, from your favorite restaurants, movies, and more!
-
-### The `movierating` Schema:
-
-```
-  {
-    "title": "string",
-    "rating": "integer"
-  }
-```
-
-A [postman](https://www.postman.com/) collection `springboot.postman_collection.json` is provided for convenience, and contains all of the exposed API and Database endpoints; leveraging the `MovieRatingController`.
-
 ## Running Locally
 The `architect.yml` file is declarative, which allows the Architect Component it describes to be run in any environment,
 from local development all the way to production. Follow these steps to clone this repository and run the application

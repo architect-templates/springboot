@@ -1,4 +1,4 @@
-name: template-starter-springboot
+name: springboot
 
 description: |
   An example Architect component that uses Spring Boot to serve the API and

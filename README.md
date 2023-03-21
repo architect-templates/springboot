@@ -79,7 +79,7 @@ running environment. This allows you to quickly iterate and see your changes wit
 application stack.
 
 Give it a try! Search inside your project for "Favorite Movies" and change this string to “Favorite Pizzas”. Once you save
-the file, run `mvn compile` in your project's directory in a terminal to recompile the application. This Maven command will
+the file, run `mvn compile` in your project's directory in a terminal. This Maven command will
 recompile the application. Refresh the browser to see your changes.
 
 ## Deploy to the Cloud

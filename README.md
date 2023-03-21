@@ -22,7 +22,7 @@ This starter application will show how easy it is to deploy an application both 
 * Install [Docker](https://docs.docker.com/get-docker/) and make sure it's running
 * Install the [Architect CLI](https://github.com/architect-team/architect-cli)
 * [Sign up for a free Architect account](https://cloud.architect.io/signup)
-* Install [Apache Maven](https://maven.apache.org/install.html) (optional)
+* Install [Apache Maven](https://maven.apache.org/install.html) (optional, but required for hot reloading)
 
 ## Clone the repo
 To use this project, you can clone this repo yourself or use the `architect init` command.
@@ -79,7 +79,8 @@ running environment. This allows you to quickly iterate and see your changes wit
 application stack.
 
 Give it a try! Search inside your project for "Favorite Movies" and change this string to “Favorite Pizzas”. Once you save
-the file, run `mvn compile` in your project's directory in a terminal to recompile the application. Refresh the browser to see your changes.
+the file, run `mvn compile` in your project's directory in a terminal to recompile the application. This Maven command will
+recompile the application. Refresh the browser to see your changes.
 
 ## Deploy to the Cloud
 Want to try deploying this application to a cloud environment? Architect's got you covered there, too!

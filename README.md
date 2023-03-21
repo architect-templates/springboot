@@ -32,7 +32,7 @@ You can use the `architect init` command to clone this repo locally. A drop-down
 displayed for you to select from.
 
 ```bash
-%architect init
+% architect init
 ? What is the name of your project? my-starter-project
 ? Please select a framework/language for your project Springboot
 
@@ -78,7 +78,7 @@ within the component. That means you can make changes to the source code and tho
 running environment. This allows you to quickly iterate and see your changes without having to restart the
 application stack.
 
-Give it a try! Search inside your project for “Movie Ratings” and change this string to “Pizza Ratings.” Once you save
+Give it a try! Search inside your project for "Favorite Movies" and change this string to “Favorite Pizzas”. Once you save
 the file, run `mvn compile` in your project's directory in a terminal to recompile the application. Refresh the browser to see your changes.
 
 ## Deploy to the Cloud
@@ -103,7 +103,7 @@ account, you should only see `architect`. Hit enter to create your environment o
 ```
 When the command completes, you should see output similar to the following:
 ```sh
-%architect environments:create my-first-environment
+% architect environments:create my-first-environment
 ? Select a cluster architect
 Registering environment with Architect... done
 Environment created: https://cloud.architect.io/<account-name>/environments/my-first-environment
@@ -114,6 +114,6 @@ You are now ready to deploy your component to your environment in Architect's co
 run the following command from the `springboot` directory:
 
 ```sh
-architect deploy springboot:latest --account <account-name> --environment my-first-environment
+architect deploy architect.yml --account <account-name> --environment my-first-environment
 ```
 Congrats! You've deployed your first component using Architect.

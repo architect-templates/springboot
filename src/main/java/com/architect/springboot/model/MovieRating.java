@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -30,5 +29,5 @@ public class MovieRating implements Serializable {
   private String title;
 
   @Column(name = "rating")
-  private int rating;
+  private Integer rating;
 }

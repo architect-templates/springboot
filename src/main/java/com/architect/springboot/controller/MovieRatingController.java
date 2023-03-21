@@ -1,22 +1,19 @@
 package com.architect.springboot.controller;
 
 import java.util.List;
-import java.util.ArrayList;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.validation.BindingResult;
+import javax.validation.Valid;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RequestMethod;
 import com.architect.springboot.model.MovieRating;
-import com.architect.springboot.repository.MovieRatingRepository;
 import com.architect.springboot.service.MovieRatingService;
-
+import com.architect.springboot.parameters.CreateMovieRatingFormData;
 
 @Controller
 public class MovieRatingController {
@@ -24,77 +21,33 @@ public class MovieRatingController {
   @Autowired
   private MovieRatingService movieRatingService;
 
-  @RequestMapping(
-    value  = "/",
-    method = RequestMethod.GET
-  )
+  @GetMapping("/")
   public String getIndex(Model model) {
-    List<MovieRating> movieRatings = movieRatingService.getAllMovieRatings();
-    model.addAttribute("movieRatings", movieRatings);
+    model.addAttribute("movieRatings", movieRatingService.getAllMovieRatings());
+    model.addAttribute("formData", new CreateMovieRatingFormData());
     return "index";
   }
 
-  @RequestMapping(
-    value  = "/health",
-    method = RequestMethod.GET
-  )
+  @GetMapping("/health")
   @ResponseBody
   public ResponseEntity<String> healthCheck() {
     return ResponseEntity.ok("UP");
   }
 
-  @RequestMapping(
-    value  = "/movierating",
-    method = RequestMethod.GET
-  )
+  @GetMapping("/movierating")
   @ResponseBody
   public ResponseEntity<List<MovieRating>> getAllMovieRatings() {
-    List<MovieRating> movieRatings = movieRatingService.getAllMovieRatings();
-    return ResponseEntity.ok(movieRatings);
+    return ResponseEntity.ok(movieRatingService.getAllMovieRatings());
   }
 
-  @RequestMapping(
-    value  = "/movierating/{id:[\\d]+}",
-    method = RequestMethod.GET
-  )
-  @ResponseBody
-  public ResponseEntity<MovieRating> getMovieRatingById(@PathVariable("id") long id) {
-    MovieRating movieRating = movieRatingService.getMovieRatingById(id);
-    return ResponseEntity.ok(movieRating);
-  }
+  @PostMapping("/movierating")
+  public String createMovieRating(@Valid @ModelAttribute("formData") CreateMovieRatingFormData formData, BindingResult bindingResult, Model model) {
+    if (bindingResult.hasErrors()) {
+      model.addAttribute("movieRatings", movieRatingService.getAllMovieRatings());
+      return "index";
+    }
 
-  @RequestMapping(
-    value    = "/movierating",
-    method   = RequestMethod.POST,
-    consumes = "application/json",
-    produces = "application/json"
-  )
-  @ResponseBody
-  public ResponseEntity<MovieRating> saveMovieRating(@RequestBody MovieRating movieRating) {
-    MovieRating newMovieRating = movieRatingService.saveMovieRating(movieRating);
-    return ResponseEntity.ok(newMovieRating);
+    movieRatingService.saveMovieRating(formData.toParameters());
+    return String.format("redirect:%s/", System.getenv("APP_URL"));
   }
-
-  @RequestMapping(
-    value 	 = "/movierating/{id:[\\d]+}",
-    method   = RequestMethod.PUT,
-    consumes = "application/json",
-    produces = "application/json"
-  )
-  @ResponseBody
-  public ResponseEntity<MovieRating> updateMovieRating(@PathVariable("id") long id, @RequestBody MovieRating newMovieRating) {
-    MovieRating movieRating = movieRatingService.updateMovieRating(id, newMovieRating);
-    return ResponseEntity.ok(movieRating);
-  }
-
-  @RequestMapping(
-    value  = "/movierating/{id:[\\d]+}",
-    method = RequestMethod.DELETE
-  )
-  @ResponseBody
-  public ResponseEntity<String> deleteMovieRating(@PathVariable("id") long id) {
-    movieRatingService.deleteMovieRating(id);
-    return ResponseEntity.ok("OK");
-  }
-
 }

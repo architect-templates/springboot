@@ -1,4 +1,4 @@
-name: template-starter-springboot
+name: springboot
 
 description: |
   An example Architect component that uses Spring Boot to serve the API and
@@ -40,9 +40,10 @@ services:
     # Set environment variables for your application here
     environment:
       SPRING_PORT: 3000
+      APP_URL: ${{ services.app.interfaces.main.ingress.url }}
       POSTGRES_USERNAME: ${{ secrets.database_user }}
       POSTGRES_PASSWORD: ${{ secrets.database_password }}
-      POSTGRES_URL: jdbc:postgresql://${{ services.database.interfaces.main.host}}:${{ services.database.interfaces.main.port}}/${{ secrets.database_name }}
+      POSTGRES_URL: jdbc:postgresql://${{ services.database.interfaces.main.host }}:${{ services.database.interfaces.main.port }}/${{ secrets.database_name }}
       ENVIRONMENT: prod
     # We want our app to start up after the db is running so that we can connect to it on startup!
     # This block contains a list of services we need to start before 'app' starts.
@@ -60,15 +61,20 @@ services:
     #   https://docs.architect.io/components/local-configuration/#hot-reloading
     debug:
       build:
-        dockerfile: Dockerfile-dev
+        dockerfile: Dockerfile.dev
       command: mvn spring-boot:run -Dspring.devtools.restart.enabled=true
       volumes:
         # The name of the volume we are creating
-        app:
+        src:
           # Path to source code we want to mount relative to the architect.yml file
-          host_path: .
-          # The `WORKDIR` defined in the Dockerfile, where we want our code to be mounted
+          host_path: ./src
+          # The WORKDIR/src defined in the Dockerfile, where we want our code to be mounted
           mount_path: /opt/code/src
+        target:
+          # Path to target directory we want to mount relative to the architect.yml file
+          host_path: ./target
+          # The WORKDIR/target defined in the Dockerfile, where builds will be located
+          mount_path: /opt/code/target
       environment:
         ENVIRONMENT: dev
 
@@ -89,3 +95,7 @@ services:
         username: ${{ secrets.database_user }}
         password: ${{ secrets.database_password }}
         path: /${{ secrets.database_name }}
+    liveness_probe:
+      command: pg_isready -d ${{ secrets.database_name }} -U ${{ secrets.database_user }}
+      interval: 10s
+      failure_threshold: 3

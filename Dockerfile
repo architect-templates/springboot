@@ -1,6 +1,7 @@
 FROM maven:3-openjdk-18 as build
 WORKDIR /opt/code/src
-COPY . .
+COPY pom.xml .
+COPY src ./src
 RUN mvn package
 
 FROM maven:3-openjdk-18-slim

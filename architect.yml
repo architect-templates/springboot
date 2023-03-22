@@ -54,7 +54,7 @@ services:
       # Uses curl to check if this route returns a 200
       path: /health
       port: 3000
-      interval: 5s
+      interval: 10s
       initial_delay: 30s # Spring Boot takes ~30s to start app
     # Debug block is used to modify behavior when running `architect dev` (without the --debug=false flag)
     #   One common example is to enable hot-reloading for local development. For more info, see -
